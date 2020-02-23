@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 
-// Usuarios-model.js - A KnexJS
+// Empleados-model.js - A KnexJS
 // 
 // See http://knexjs.org/
 // for more of what you can do here.
 module.exports = function (app) {
   const db = app.get('knexClient');
-  const tableName = 'usuarios';
+  const tableName = 'empleados';
   db.schema.hasTable(tableName).then(exists => {
     if(!exists) {
       db.schema.createTable(tableName, table => {
