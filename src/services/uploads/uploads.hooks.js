@@ -1,9 +1,8 @@
 
-const utils = require('../../utils/utils')
 
 module.exports = {
   before: {
-    all: [context => utils.isTokenValid(context)],
+    all: [],
     find: [],
     get: [],
     create: [],

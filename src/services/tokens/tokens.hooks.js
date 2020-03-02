@@ -14,6 +14,7 @@ module.exports = {
         }
       } 
       
+      return context
     }],
     find: [],
     get: [],
@@ -24,14 +25,16 @@ module.exports = {
   },
 
   after: {
-    all: [context => {
-      if(context.forb === true) context.result = {
-        status : 403,
+    all: [
+      context => {
+        if(context.forb === true) context.result = {
+          status : 403,
           message: 'not today'
-      }
+        }
 
-      return context
-    }],
+        return context
+      }
+    ],
     find: [],
     get: [],
     create: [],
