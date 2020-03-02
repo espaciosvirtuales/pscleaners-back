@@ -32,8 +32,8 @@ CREATE TABLE `archivos` (
   `Id` int(11) NOT NULL,
   `Empleado_Id` int(11) NOT NULL,
   `Categoria_Id` int(11) NOT NULL,
-  `Ruta` varchar(500) NOT NULL,
-  `Nombre` varchar(500) NOT NULL,
+  `Ruta` varchar(255) NOT NULL,
+  `Nombre` varchar(255) NOT NULL,
   `FechaCreacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -45,7 +45,7 @@ CREATE TABLE `archivos` (
 
 CREATE TABLE `categorias` (
   `Id` int(11) NOT NULL,
-  `Nombre` varchar(500) NOT NULL,
+  `Nombre` varchar(255) NOT NULL,
   `FechaCreacion` date NOT NULL,
   `Estado` tinyint(4) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -58,10 +58,10 @@ CREATE TABLE `categorias` (
 
 CREATE TABLE `empleados` (
   `Id` int(11) NOT NULL,
-  `Nombre` varchar(500) NOT NULL,
+  `Nombre` varchar(255) NOT NULL,
   `Sexo` enum('Hombre','Mujer','Otro') NOT NULL,
-  `Apellido` varchar(500) NOT NULL,
-  `Empresa` varchar(500) NOT NULL,
+  `Apellido` varchar(255) NOT NULL,
+  `Empresa` varchar(255) NOT NULL,
   `FechaCreacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -84,7 +84,7 @@ CREATE TABLE `fileupload` (
 
 CREATE TABLE `Operadores` (
   `Id` int(11) NOT NULL,
-  `Nombre` varchar(500) NOT NULL,
+  `Nombre` varchar(255) NOT NULL,
   `FechaCreacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -94,10 +94,10 @@ CREATE TABLE `Operadores` (
 -- Estructura de tabla para la tabla `operadores`
 --
 
-CREATE TABLE `operadores` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `text` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- CREATE TABLE `operadores` (
+--   `id` int(10) UNSIGNED NOT NULL,
+--   `text` varchar(255) DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -143,15 +143,15 @@ INSERT INTO `tokens` (`id`, `token`, `userid`, `FechaCreacion`) VALUES
 
 CREATE TABLE `usuarios` (
   `Id` int(11) NOT NULL,
-  `Nombre` varchar(500) NOT NULL,
-  `Direccion` varchar(500) NOT NULL,
-  `Sucursal` varchar(500) NOT NULL,
-  `Contacto` varchar(500) NOT NULL,
-  `Telefono` varchar(500) NOT NULL,
-  `Ciudad` varchar(500) NOT NULL,
-  `Correo` varchar(500) NOT NULL,
-  `NombreUsuario` varchar(500) NOT NULL,
-  `Contrasenia` varchar(500) NOT NULL,
+  `Nombre` varchar(255) NOT NULL,
+  `Direccion` varchar(255) NOT NULL,
+  `Sucursal` varchar(255) NOT NULL,
+  `Contacto` varchar(255) NOT NULL,
+  `Telefono` varchar(255) NOT NULL,
+  `Ciudad` varchar(255) NOT NULL,
+  `Correo` varchar(255) NOT NULL,
+  `NombreUsuario` varchar(255) NOT NULL,
+  `Contrasenia` varchar(255) NOT NULL,
   `Rol` enum('Administrador','Cliente') NOT NULL,
   `FechaCreacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -200,8 +200,8 @@ ALTER TABLE `Operadores`
 --
 -- Indices de la tabla `operadores`
 --
-ALTER TABLE `operadores`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `operadores`
+--   ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `operador_cliente`
@@ -259,8 +259,8 @@ ALTER TABLE `Operadores`
 --
 -- AUTO_INCREMENT de la tabla `operadores`
 --
-ALTER TABLE `operadores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+-- ALTER TABLE `operadores`
+--   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `operador_cliente`
