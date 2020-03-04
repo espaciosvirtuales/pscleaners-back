@@ -2,19 +2,21 @@
 
 module.exports = {
   before: {
-    all: [context => {
+    all: [
+    //   context => {
     
-      if(context.params.provider){
+    //   if(context.params.provider){
 
-        context.forb = true
+    //     context.forb = true
 
-        context.result = {
-          status : 403,
-          message: 'not today'
-        }
-      } 
+    //     context.result = {
+    //       status : 403,
+    //       message: 'not today'
+    //     }
+    //   } 
       
-    }],
+    // }
+  ],
     find: [],
     get: [],
     create: [],
@@ -24,14 +26,16 @@ module.exports = {
   },
 
   after: {
-    all: [context => {
-      if(context.forb === true) context.result = {
-        status : 403,
-          message: 'not today'
-      }
+    all: [
+    //   context => {
+    //   if(context.forb === true) context.result = {
+    //     status : 403,
+    //       message: 'not today'
+    //   }
 
-      return context
-    }],
+    //   return context
+    // }
+  ],
     find: [],
     get: [],
     create: [],
