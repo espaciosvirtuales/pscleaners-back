@@ -13,19 +13,7 @@ module.exports = {
 
   after: {
     all: [],
-    find: [
-      populate({
-        categoria: {
-          service: 'categorias',
-          f_key: 'id',
-          l_key: 'Categoria_Id',
-          one: true,
-          query: {
-            $select: ['Nombre']
-          }
-        },
-      })
-    ],
+    find: [],
     get: [],
     create: [],
     update: [],

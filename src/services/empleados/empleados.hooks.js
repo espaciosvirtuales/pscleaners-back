@@ -1,9 +1,9 @@
-
-const utils = require('../../utils/utils')
+const utils = require('../../utils/utils');
+const populate = require('feathers-populate-hook');
 
 module.exports = {
   before: {
-    all: [context => utils.isTokenValid(context)],
+    all: [/*/context => utils.isTokenValid(context)*/],
     find: [],
     get: [],
     create: [],
@@ -14,7 +14,27 @@ module.exports = {
 
   after: {
     all: [],
-    find: [],
+    find: [
+      populate({
+        cliente: {
+          service: 'usuarios',
+          f_key: 'id',
+          l_key: 'Empresa',
+          one: true,
+          query: {
+            $select: ['Nombre', 'Direccion', 'Sucursal', 'Contacto', 'Telefono', 'Ciudad', 'Correo', 'Rol']
+          }
+        },
+        archivos: {
+          service: 'archivos',
+          f_key: 'Empleado_Id',
+          l_key: 'id',
+          // query: {
+          //   $select: ['Ruta', 'Nombre', 'categoria']
+          // }
+        }
+      })
+    ],
     get: [],
     create: [],
     update: [],

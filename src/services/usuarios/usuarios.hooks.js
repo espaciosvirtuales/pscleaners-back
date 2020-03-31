@@ -1,22 +1,22 @@
-
+const populate = require('feathers-populate-hook');
 
 module.exports = {
   before: {
     all: [
-    //   context => {
-    
-    //   if(context.params.provider){
+      //   context => {
 
-    //     context.forb = true
+      //   if(context.params.provider){
 
-    //     context.result = {
-    //       status : 403,
-    //       message: 'not today'
-    //     }
-    //   } 
-      
-    // }
-  ],
+      //     context.forb = true
+
+      //     context.result = {
+      //       status : 403,
+      //       message: 'not today'
+      //     }
+      //   } 
+
+      // }
+    ],
     find: [],
     get: [],
     create: [],
@@ -27,16 +27,27 @@ module.exports = {
 
   after: {
     all: [
-    //   context => {
-    //   if(context.forb === true) context.result = {
-    //     status : 403,
-    //       message: 'not today'
-    //   }
+      //   context => {
+      //   if(context.forb === true) context.result = {
+      //     status : 403,
+      //       message: 'not today'
+      //   }
 
-    //   return context
-    // }
-  ],
-    find: [],
+      //   return context
+      // }
+    ],
+    find: [
+      populate({
+        empleados: {
+          service: 'empleados',
+          f_key: 'Empresa',
+          l_key: 'id',
+          query: {
+            $select: ['Nombre', 'Sexo', 'Apellido']
+          }
+        }
+      })
+    ],
     get: [],
     create: [],
     update: [],

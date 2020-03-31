@@ -49,6 +49,7 @@
     "exceljs": "^3.8.0",
     "express-fileupload": "^1.1.6",
     "feathers-knex": "^7.1.0",
+    "feathers-populate-hook": "^0.5.3",
     "helmet": "^3.21.2",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.20.10",
