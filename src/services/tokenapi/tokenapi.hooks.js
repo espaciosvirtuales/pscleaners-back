@@ -9,37 +9,50 @@ module.exports = {
     create: [
       async context => {
         context.data.Contrasenia = md5(context.data.Contrasenia)
-        const {NombreUsuario, Contrasenia} = context.data 
+        const { NombreUsuario, Contrasenia } = context.data
+
+        console.log("before users")
+
+
+
+
         let users = await context.app.service('usuarios').find({
           query: {
             NombreUsuario,
-          Contrasenia
-        }
+            Contrasenia
+          }
         })
-        
 
-    
-        if(users.total == 1){
+
+        console.log("hola");
+
+
+        if (users.total == 1) {
           context.apr = true
 
           const payload = {
-            check:  true,
+            check: true,
             ...users.data
-           };
+          };
 
-           
-          
+          delete users.data[0].Contrasenia;
+
+
+
           const token = jwt.sign(payload, '221bbakerstreet', {});
+          console.log("hola");
+          console.log(token);
 
 
-           context.token = token
 
-           await context.app.service('tokens').create({
-             token: token,
-             userid: users.data[0].Id
-           })
+          context.token = token
 
-        } 
+          await context.app.service('tokens').create({
+            token: token,
+            userid: users.data[0].id
+          })
+
+        }
         else {
           context.apr = false
         }
@@ -54,12 +67,12 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [ context => {
-      
-      if(context.apr === false){
+    create: [context => {
 
-        
-        
+      if (context.apr === false) {
+
+
+
         context.result = {
           status: 403,
           message: 'user not found'
@@ -67,7 +80,7 @@ module.exports = {
 
       }
 
-      if(context.apr === true){
+      if (context.apr === true) {
         context.result = {
           status: 200,
           message: 'user logged',

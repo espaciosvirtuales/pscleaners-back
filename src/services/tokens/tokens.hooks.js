@@ -3,17 +3,17 @@
 module.exports = {
   before: {
     all: [context => {
-    
-      if(context.params.provider){
+
+      if (context.params.provider) {
 
         context.forb = true
 
         context.result = {
-          status : 403,
+          status: 403,
           message: 'not today'
         }
-      } 
-      
+      }
+
       return context
     }],
     find: [],
@@ -27,8 +27,8 @@ module.exports = {
   after: {
     all: [
       context => {
-        if(context.forb === true) context.result = {
-          status : 403,
+        if (context.forb === true) context.result = {
+          status: 403,
           message: 'not today'
         }
 

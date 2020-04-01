@@ -3,7 +3,7 @@ const populate = require('feathers-populate-hook');
 
 module.exports = {
   before: {
-    all: [/*/context => utils.isTokenValid(context)*/],
+    all: [context => utils.isTokenValid(context)],
     find: [],
     get: [],
     create: [],
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   after: {
-    all: [],
+    all: [context => console.log("entro de todos modos")],
     find: [
       populate({
         cliente: {
