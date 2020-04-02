@@ -36,6 +36,7 @@ module.exports = {
           };
 
           delete users.data[0].Contrasenia;
+          delete users.data[0].empleados;
 
 
 

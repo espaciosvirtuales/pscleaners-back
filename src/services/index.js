@@ -10,6 +10,7 @@ const uploads = require('./uploads/uploads.service.js');
 const tokenapi = require('./tokenapi/tokenapi.service.js');
 const tokens = require('./tokens/tokens.service.js');
 const correos = require('./correos/correos.service.js');
+const exportExcel = require('./export-excel/export-excel.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(usuarios);
@@ -24,4 +25,5 @@ module.exports = function (app) {
   app.configure(tokenapi);
   app.configure(tokens);
   app.configure(correos);
+  app.configure(exportExcel);
 };
