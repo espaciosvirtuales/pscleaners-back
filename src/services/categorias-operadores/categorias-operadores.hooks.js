@@ -1,5 +1,4 @@
 const utils = require('../../utils/utils');
-const populate = require('feathers-populate-hook');
 
 module.exports = {
   before: {
@@ -14,18 +13,7 @@ module.exports = {
 
   after: {
     all: [],
-    find: [
-      populate({
-        archivos: {
-          service: 'archivos-operadores',
-          f_key: 'Operador_Id',
-          l_key: 'id',
-          // query: {
-          //   $select: ['Ruta', 'Nombre', 'categoria']
-          // }
-        }
-      })
-    ],
+    find: [],
     get: [],
     create: [],
     update: [],
@@ -35,7 +23,7 @@ module.exports = {
         // console.log(context.id);
         await context.app.service('archivos-operadores').remove(null, {
           query: {
-            Operador_Id: context.id
+            Categoria_Id: context.id
           }
         });
       }

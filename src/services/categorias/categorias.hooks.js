@@ -1,8 +1,8 @@
-
+const utils = require('../../utils/utils');
 
 module.exports = {
   before: {
-    all: [],
+    all: [context => utils.isTokenValid(context)],
     find: [],
     get: [],
     create: [],
@@ -18,7 +18,16 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [
+      async context => {
+        // console.log(context.id);
+        await context.app.service('archivos').remove(null, {
+          query: {
+            Categoria_Id: context.id
+          }
+        });
+      }
+    ]
   },
 
   error: {

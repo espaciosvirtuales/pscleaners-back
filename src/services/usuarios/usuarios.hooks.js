@@ -1,22 +1,9 @@
+const utils = require('../../utils/utils');
 const populate = require('feathers-populate-hook');
 
 module.exports = {
   before: {
-    all: [
-      // context => {
-
-      //   if (context.params.provider) {
-
-      //     context.forb = true
-
-      //     context.result = {
-      //       status: 403,
-      //       message: 'not today'
-      //     }
-      //   }
-
-      // }
-    ],
+    all: [context => utils.isTokenValid(context)],
     find: [],
     get: [],
     create: [],
@@ -26,16 +13,7 @@ module.exports = {
   },
 
   after: {
-    all: [
-      // context => {
-      //   if (context.forb === true) context.result = {
-      //     status: 403,
-      //     message: 'not today'
-      //   }
-
-      //   return context
-      // }
-    ],
+    all: [],
     find: [
       populate({
         empleados: {
@@ -52,7 +30,21 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [
+      async context => {
+        // console.log(context.id);
+        await context.app.service('empleados').remove(null, {
+          query: {
+            Empresa: context.id
+          }
+        });
+        await context.app.service('operador_cliente').remove(null, {
+          query: {
+            Cliente_Id: context.id
+          }
+        });
+      }
+    ]
   },
 
   error: {

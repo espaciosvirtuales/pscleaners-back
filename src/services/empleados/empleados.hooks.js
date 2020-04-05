@@ -13,7 +13,7 @@ module.exports = {
   },
 
   after: {
-    all: [context => console.log("entro de todos modos")],
+    all: [],
     find: [
       populate({
         cliente: {
@@ -39,7 +39,16 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [
+      async context => {
+        // console.log(context.id);
+        await context.app.service('archivos').remove(null, {
+          query: {
+            Empleado_Id: context.id
+          }
+        });
+      }
+    ]
   },
 
   error: {

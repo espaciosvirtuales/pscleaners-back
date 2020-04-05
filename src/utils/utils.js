@@ -14,7 +14,7 @@ const isTokenValid = async function (context) {
         })
 
 
-        console.log(tokens);
+        // console.log(tokens);
 
 
 
