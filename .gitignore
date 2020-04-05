@@ -109,3 +109,7 @@ $RECYCLE.BIN/
 # Others
 lib/
 data/
+
+#files directories
+public/files
+public/xls
