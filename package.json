@@ -48,7 +48,7 @@
     "cors": "^2.8.5",
     "excel4node": "^1.7.2",
     "exceljs": "^3.8.0",
-    "express-fileupload": "^1.1.6",
+    "express-fileupload": "^1.1.9",
     "feathers-knex": "^7.1.0",
     "feathers-populate-hook": "^0.5.3",
     "helmet": "^3.21.2",
