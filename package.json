@@ -53,7 +53,7 @@
     "feathers-populate-hook": "^0.5.3",
     "helmet": "^3.21.2",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.20.10",
+    "knex": "^2.4.0",
     "mysql2": "^2.1.0",
     "node-xlsx": "^0.15.0",
     "serve-favicon": "^2.5.0",
